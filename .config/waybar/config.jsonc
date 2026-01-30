@@ -1,0 +1,101 @@
+{
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+
+    // ------------------------------------
+    // Choose the order of the modules
+    "modules-left": [
+        "cpu",
+        "memory",
+        "hyprland/workspaces",
+        "tray",
+        "custom/media"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "network",
+        "temperature"
+    ],
+
+    // ------------------------------------
+    // Modules
+    "hyprland/workspaces":{
+        "format":"{id}"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+    "clock": {
+        "format": "--  {:%I:%M      %d/%m}  --",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "year",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "left",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#a0ead3'><b>{}</b></span>",
+                "days":       "<span color='#e2ffff'><b>{}</b></span>",
+                "weeks":      "<span color='#ffffff'><b>W{}</b></span>",
+                "weekdays":   "<span color='#33aaaa'><b>{}</b></span>",
+                "today":      "<span color='#ffffff'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "cpu": {
+        "format": "{usage}%  "
+    },
+    "memory": {
+        "format": "{}%  ",
+        "tooltip-format":"{total}GB Total\n\n{used}GB/{avail}GB Used\n{swapUsed}GB/{swapAvail}GB Swap Used"
+    },
+    "temperature": {
+	"hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input",
+        "critical-threshold": 65,
+        "format": "{temperatureC}°C  {icon}",
+        "format-icons": ["", "", ""],
+        "tooltip": false
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%)  ",
+        "format-ethernet": "Ethernet  ",
+        "tooltip-format": "{ipaddr}  ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected  ⚠",
+        "format-alt": "{bandwidthUpBytes}    {bandwidthDownBytes}  "
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}%   {icon}   {format_source}",
+        "format-bluetooth": "{volume}%   {icon}   {format_source}",
+        "format-bluetooth-muted": " {icon}   {format_source}",
+        "format-muted": "mute   {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "mute ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "amixer set Capture toggle"
+    }
+}

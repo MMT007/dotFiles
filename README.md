@@ -1,2 +1,2 @@
 # dotFiles
-My dotFile for my current hyprland setup
+My dotFiles for my current hyprland setup

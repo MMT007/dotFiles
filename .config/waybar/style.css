@@ -1,0 +1,140 @@
+* {
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+/*
+-----------------------------
+        WINDOW STYLE
+-----------------------------
+*/
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 0;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+/*
+-----------------------------
+        Idk what this does but and I'm too scared to touch it
+-----------------------------
+*/
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#tray {
+    padding: 0 15px;
+}
+
+/*
+-----------------------------
+        BUTTON STYLE
+-----------------------------
+*/
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -3px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+.modules-left widget,
+.modules-center widget,
+.modules-right widget {
+    border-bottom: 1px solid white;
+}
+
+/*
+-----------------------------
+        HOVER STYLE
+-----------------------------
+*/
+
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#clock:hover,
+#network:hover,
+#pulseaudio:hover {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.215),transparent);
+}
+
+/*
+-----------------------------
+        MODULE STYLE
+-----------------------------
+*/
+
+#network.disconnected{
+    color: red;
+}
+
+#pulseaudio.muted{
+    color: rgb(255, 179, 179);
+}
+
+#pulseaudio.source-muted{
+    color: rgb(255, 69, 69);
+}
+
+#pulseaudio.source-muted.muted{
+    color: rgb(179, 1, 1);
+}
+
+#temperature.critical {
+    color: #eb4d4b;
+}
+
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#workspaces button {
+    padding-bottom: 0;
+    border-radius: 0;
+    color: #494949;
+}
+
+#workspaces button.active {
+   color: rgb(235, 235, 235);
+   background-image: radial-gradient(rgba(108, 108, 108, 0.452), transparent, transparent);
+}
